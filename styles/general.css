@@ -1,0 +1,11 @@
+  body {
+    background-color: rgb(7, 7, 7);
+    padding-top: 75px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+  }
+
+  p {
+    color: white;
+  }

@@ -1,0 +1,142 @@
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.logo {
+  width: clamp(10px, 2vw, 20px);
+  height: clamp(10px, 2vw, 20px);
+  object-fit: cover;
+}
+
+.cat {
+  background-color: rgb(7, 7, 7);
+  flex: 1 1 calc(33.333% - 20px);
+  min-width: 100px;
+  max-width: 300px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(38, 38, 38);
+  border-radius: 15px;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  position: relative;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.cat::after,
+.cat::before {
+  content: '';
+  position: absolute;
+  background-image: conic-gradient(from var(--angle), rgb(248, 0, 0), rgb(39, 0, 0), rgb(255, 61, 61), rgb(39, 0, 0), rgb(248, 0, 0));
+  z-index: -1;
+  inset: -.15rem;
+  border-radius: inherit;
+  visibility: hidden;
+}
+
+.cat::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+.cat:hover {
+  border-width: 0px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.9);
+  transform: scale(1.05);
+}
+
+.cat:hover::after,
+.cat:hover::before {
+  animation: 5s spin linear infinite;
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.cat-name {
+  font-size: clamp(7px, 2vw, 14px);
+  font-family: 'Inter';
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.social-link {
+  background-color: rgb(7, 7, 7);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(41, 41, 41);
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  transition: opacity 0.15s, background-color 0.15s;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  max-width: 30%;
+  overflow: hidden;
+}
+
+.social-link:hover {
+  opacity: 0.8;
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.social-link:active {
+  opacity: 0.5;
+}
+
+.link {
+  margin: 0;
+  font-size: clamp(4px, 1vw, 12px);
+  font-family: 'Inter';
+  text-decoration: none;
+}
+
+.cat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 10px;
+}
